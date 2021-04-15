@@ -1,5 +1,1 @@
 runtime: python39
-
-handlers:
-- url: /.*
-  script: application.py

@@ -1,9 +1,9 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, StringField, PasswordField, validators
 
-application = Flask(__name__)
-application.config.from_object(__name__)
-application.config['SECRET_KEY'] = '123456'
+app = Flask(__name__)
+app.config.from_object(__name__)
+app.config['SECRET_KEY'] = '123456'
 
 fixed_user = 'Nitin'
 fixed_password = 'password'
@@ -13,7 +13,7 @@ class LoginForm(Form):
     password = PasswordField('Password:', validators=[validators.DataRequired()])
 
 
-@application.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST':
@@ -31,4 +31,4 @@ def login():
     return render_template('index.html', form=form)
 
 if __name__ == "__main__":
-    application.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.1', port=8080, debug=True)
